@@ -1,13 +1,13 @@
 export default (state = [], action) => {
   switch (action.type) {
     case "ADD_QUOTE":
-      return {...state, quotes: state.quotes.concat(action.quote)}
+      return state.concat(action.quote)
     case "REMOVE_QUOTE":
-      const quotes = state.quotes.filter(quote => quote.id !== action.quote.id)
+      const quotes = state.filter(quote => quote.id !== action.quoteId)
       return quotes
     case "UPVOTE_QUOTE":
-      return state.quotes.map(quote => {
-        if (quote.id === action.quote.id) {
+      return state.map(quote => {
+        if (quote.id === action.quoteId) {
           quote.votes += 1;
           return quote
         } else {
@@ -15,9 +15,12 @@ export default (state = [], action) => {
         }
       })
     case "DOWNVOTE_QUOTE":
-      return state.quotes.map(quote => {
-        if (quote.id === action.quote.id) {
-          quote.votes -= 1;
+      console.log("downvote", action)
+      return state.map(quote => {
+        if (quote.id === action.quoteId) {
+          if( quote.votes > 0) {
+            quote.votes -= 1;
+          }
           return quote
         } else {
           return quote
