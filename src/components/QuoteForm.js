@@ -25,7 +25,7 @@ class QuoteForm extends Component {
       author: this.state.author,
       votes: 0
     }
-    this.props.dispatch(addQuote(quote));
+    this.props.addQuote(quote);
     this.setState({
       content: "",
       author: ""
@@ -41,7 +41,7 @@ class QuoteForm extends Component {
           <div className="col-md-8 col-md-offset-2">
             <div className="panel panel-default">
               <div className="panel-body">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
                   <div className="form-group">
                     <label htmlFor="content" className="col-md-4 control-label">Quote</label>
                     <div className="col-md-5">
@@ -80,6 +80,9 @@ class QuoteForm extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {addQuote: quote => dispatch(addQuote(quote))}
+}
 
 //add arguments to connect as needed
-export default connect()(QuoteForm);
+export default connect(null, mapDispatchToProps)(QuoteForm);

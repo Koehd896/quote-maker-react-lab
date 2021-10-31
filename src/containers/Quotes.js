@@ -13,8 +13,8 @@ class Quotes extends Component {
       this.props.quotes.map(quote => {
         return <QuoteCard 
         quote={quote} 
-        upvoteQuote={() => this.props.upvoteQuote(quote)}
-        downvoteQuote={() => this.props.downvoteQuote(quote)}
+        upvoteQuote={this.props.upvoteQuote}
+        downvoteQuote={this.props.downvoteQuote}
         />})
       )
   }

@@ -1,7 +1,7 @@
 export default (state = [], action) => {
   switch (action.type) {
     case "ADD_QUOTE":
-      return {quotes: state.quotes.concat(action.quote)}
+      return {...state, quotes: state.quotes.concat(action.quote)}
     case "REMOVE_QUOTE":
       const quotes = state.quotes.filter(quote => quote.id !== action.quote.id)
       return quotes
