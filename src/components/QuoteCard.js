@@ -14,7 +14,7 @@ const QuoteCard = (props) =>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={props.upvoteQuote(props.quote)}
+            onClick={() => props.upvoteQuote(props.quote)}
           >
             Upvote
           </button>
@@ -27,7 +27,7 @@ const QuoteCard = (props) =>
           <button
             type="button"
             className="btn btn-danger"
-            onClick={props.downvoteQuote(props.quote)}
+            onClick={() => props.downvoteQuote(props.quote)}
           >
             <span aria-hidden="true">&times;</span>
           </button>
